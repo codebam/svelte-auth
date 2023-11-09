@@ -1,5 +1,0 @@
-{
-  "devDependencies": {
-    "@sveltejs/adapter-cloudflare": "^2.3.3"
-  }
-}
