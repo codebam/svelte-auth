@@ -1,3 +1,5 @@
+import { fail, redirect } from '@sveltejs/kit';
+
 const sha256 = async (text: string): Promise<string> =>
 	crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then((array_buffer) =>
 		Array.from(new Uint8Array(array_buffer))
@@ -14,13 +16,13 @@ export const actions = {
 			.bind(email)
 			.all();
 		if (user.results[0]) {
-			return false;
+			return {};
 		}
 		await event.platform?.env.DB.prepare('INSERT INTO Users VALUES (?, ?)')
 			.bind(email, password)
 			.all();
 		event.cookies.set('session', JSON.stringify({ email, password }), { path: '/' });
-		return true;
+		throw redirect(303, '/');
 	},
 	login: async (event) => {
 		const data = await event.request.formData();
@@ -31,8 +33,7 @@ export const actions = {
 			.all();
 		const db_password = user.results[0].password;
 		if (password === db_password) {
-			return true;
+			throw redirect(303, '/');
 		}
-		return false;
 	}
 };
