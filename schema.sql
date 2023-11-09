@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS Users (id TEXT PRIMARY KEY, userId TEXT, section TEXT, content TEXT);
