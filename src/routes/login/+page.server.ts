@@ -10,6 +10,7 @@ export const actions = {
 			.bind(email, password)
 			.all();
 		if (success) {
+			event.cookies.set('session', JSON.stringify({ email, password }));
 			throw redirect(303, '/');
 		}
 	},
@@ -21,6 +22,7 @@ export const actions = {
 			.bind(email)
 			.all();
 		if (results.results[0].password === password) {
+			event.cookies.set('session', JSON.stringify({ email, password }));
 			throw redirect(303, '/');
 		}
 	}

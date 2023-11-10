@@ -2,7 +2,7 @@ declare global {
 	namespace App {
 		interface Platform {
 			env?: {
-				DB: D1Namespace;
+				DB: D1Database;
 			};
 			context: {
 				waitUntil(promise: Promise<any>): void;
