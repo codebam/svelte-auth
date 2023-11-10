@@ -6,7 +6,7 @@ export const actions = {
 		const data = await event.request.formData();
 		const email = data.get('email');
 		const password = await sha256(data.get('password')?.toString() ?? '');
-		const { success } = await event.platform?.env.DB.prepare('INSERT INTO Users VALUES (?, ?)')
+		const { success } = await event.platform?.env?.DB.prepare('INSERT INTO Users VALUES (?, ?)')
 			.bind(email, password)
 			.all();
 		if (success) {
@@ -17,7 +17,7 @@ export const actions = {
 		const data = await event.request.formData();
 		const email = data.get('email');
 		const password = await sha256(data.get('password')?.toString() ?? '');
-		const results = await event.platform?.env.DB.prepare('SELECT password FROM Users WHERE id=?')
+		const results = await event.platform?.env?.DB.prepare('SELECT password FROM Users WHERE id=?')
 			.bind(email)
 			.all();
 		if (results.results[0].password === password) {
