@@ -13,7 +13,7 @@
     <li>
       {item.content}
       <form method="POST" action="/userdata?/delete">
-        <input name="id" value="{item.id}">
+        <input style="display: none;" name="id" value="{item.id}">
         <button>delete</button>
       </form>
     </li>
