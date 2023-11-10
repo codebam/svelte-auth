@@ -4,6 +4,7 @@ declare global {
 			env?: {
 				DB: D1Database;
 				DATA_DB: D1Database;
+				PLAYLIST_DB: D1Database;
 			};
 			context: {
 				waitUntil(promise: Promise<any>): void;
