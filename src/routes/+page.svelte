@@ -1,10 +1,12 @@
 <script lang="ts">
-  export let data: {auth: boolean, userdata: string[] | undefined};
+  export let data: {auth: boolean, song: string};
 </script>
 
 {#if !data.auth}
 <p>Visit <a href="/login">login</a></p>
 {/if}
+
+<iframe width="560" height="315" src="{data.song}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 {#if data.auth}
   <p>You successfully logged in!</p>
@@ -14,6 +16,5 @@
     </label>
     <button>Submit</button>
   </form>
-  <iframe width="560" height="315" src="{data.song}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <p><a href="/logout">Log out</a></p>
 {/if}
