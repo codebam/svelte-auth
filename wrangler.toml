@@ -8,3 +8,8 @@ binding = "AI"
 binding = "DB"
 database_name = "svelte-auth"
 database_id = "3d2d21ca-4fe7-4fac-a472-1c6c0fa141ff"
+
+[[d1_databases]]
+binding = "DATA_DB"
+database_name = "svelte-auth-data"
+database_id = "852653b9-8d0e-43a6-99be-9f1802de0257"
