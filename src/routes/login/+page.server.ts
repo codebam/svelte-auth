@@ -1,11 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-
-const sha256 = async (text: string): Promise<string> =>
-	crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then((array_buffer) =>
-		Array.from(new Uint8Array(array_buffer))
-			.map((b) => b.toString(16).padStart(2, '0'))
-			.join('')
-	);
+import sha256 from '$lib/sha256';
 
 export const actions = {
 	register: async (event) => {
@@ -16,6 +10,17 @@ export const actions = {
 			.bind(email, password)
 			.all();
 		if (success) {
+			throw redirect(303, '/');
+		}
+	},
+	login: async (event) => {
+		const data = await event.request.formData();
+		const email = data.get('email');
+		const password = await sha256(data.get('password')?.toString() ?? '');
+		const results = await event.platform?.env.DB.prepare('SELECT password FROM Users WHERE id=?')
+			.bind(email)
+			.all();
+		if (results.results[0].password === password) {
 			throw redirect(303, '/');
 		}
 	}
