@@ -1,6 +1,5 @@
 <script lang="ts">
   export let data: {auth: boolean};
-  console.log(data.auth);
 </script>
 
 <h1>Welcome to SvelteKit</h1>
