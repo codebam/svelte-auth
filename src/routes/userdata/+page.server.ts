@@ -15,9 +15,11 @@ export const actions = {
 	},
 	delete: async (event) => {
 		if (await tryLogin(event.cookies.get('session') ?? '', event.platform?.env?.DB)) {
+			const session = JSON.parse(event.cookies.get('session'));
+			const email = session.email;
 			const formdata = await event.request.formData();
-			await event.platform?.env?.DATA_DB.prepare('DELETE FROM UserData WHERE id=?')
-				.bind(formdata.get('id'))
+			await event.platform?.env?.DATA_DB.prepare('DELETE FROM UserData WHERE id=? AND email=?')
+				.bind(formdata.get('id'), email)
 				.all();
 			throw redirect(303, '/');
 		}
