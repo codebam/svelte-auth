@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let data: {auth: boolean, userdata: string | boolean};
+  export let data: {auth: boolean, userdata: string[] | undefined};
 </script>
 
 {#if !data.auth}
@@ -8,7 +8,17 @@
 
 {#if data.auth}
   <p>You successfully logged in!</p>
-  {data.userdata}
+  <ul>
+  {#each data.userdata as item}
+    <li>
+      {item.content}
+      <form method="POST" action="/userdata?/delete">
+        <input name="id" value="{item.id}">
+        <button>delete</button>
+      </form>
+    </li>
+  {/each}
+  </ul>
   <form method="POST" action="/userdata?/set">
     <label>Set Userdata
       <textarea name="userdata"></textarea>
