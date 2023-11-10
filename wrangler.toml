@@ -1,5 +1,5 @@
 name = "svelte-auth"
-compatibility_date = "2023-10-24"
+compatibility_date = "2023-11-09"
 
 [ai]
 binding = "AI"
