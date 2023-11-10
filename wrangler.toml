@@ -14,8 +14,10 @@ binding = "DATA_DB"
 database_name = "svelte-auth-data"
 database_id = "852653b9-8d0e-43a6-99be-9f1802de0257"
 
-
 [[d1_databases]]
 binding = "PLAYLIST_DB"
 database_name = "svelte-auth-playlist"
 database_id = "162d82c0-2aea-48f6-a2c4-71ca7d9b6ad2"
+
+[triggers]
+crons = [ "*/5 * * * *" ]
