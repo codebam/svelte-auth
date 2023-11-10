@@ -12,7 +12,7 @@
   <p>You successfully logged in!</p>
   <form method="POST" action="/playlist?/add">
     <label>Submit a song
-      <input name="url" type="url" pattern="https://www.youtube.com/.*">
+      <input name="url" type="url" pattern="https://.*youtube.com/.*">
     </label>
     <button>Submit</button>
   </form>
