@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let data: {auth: boolean, song: string, session: string};
+  export let data: {auth: boolean, song: string};
 </script>
 
 {#if !data.auth}
@@ -7,8 +7,6 @@
 {/if}
 
 <iframe width="560" height="315" src="{data.song}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-{data.session}
 
 {#if data.auth}
   <p>You successfully logged in!</p>
