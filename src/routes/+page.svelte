@@ -12,7 +12,7 @@
   {#each data.userdata as item}
     <li>
       {item.content}
-      <form method="POST" action="/userdata?/delete">
+      <form style="display: inline;" method="POST" action="/userdata?/delete">
         <input style="display: none;" name="id" value="{item.id}">
         <button>delete</button>
       </form>
