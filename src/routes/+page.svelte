@@ -2,9 +2,11 @@
   export let data: {auth: boolean};
 </script>
 
-<h1>Welcome to SvelteKit</h1>
+{#if !data.auth}
 <p>Visit <a href="/login">login</a></p>
+{/if}
 
 {#if data.auth}
   <p>You successfully logged in!</p>
+  <p><a href="/logout">Log out</a></p>
 {/if}
