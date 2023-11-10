@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS Playlist (id TEXT PRIMARY KEY, email TEXT, url TEXT);

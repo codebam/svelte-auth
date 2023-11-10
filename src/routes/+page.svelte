@@ -8,22 +8,12 @@
 
 {#if data.auth}
   <p>You successfully logged in!</p>
-  <ul>
-  {#each data.userdata as item}
-    <li>
-      {item.content}
-      <form style="display: inline;" method="POST" action="/userdata?/delete">
-        <input style="display: none;" name="id" value="{item.id}">
-        <button>delete</button>
-      </form>
-    </li>
-  {/each}
-  </ul>
-  <form method="POST" action="/userdata?/set">
-    <label>Set Userdata
-      <textarea name="userdata"></textarea>
+  <form method="POST" action="/playlist?/add">
+    <label>Submit a song
+      <input name="url" type="url">
     </label>
     <button>Submit</button>
   </form>
+  <iframe width="560" height="315" src="{data.song}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <p><a href="/logout">Log out</a></p>
 {/if}
