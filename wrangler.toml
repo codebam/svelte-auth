@@ -8,8 +8,3 @@ binding = "AI"
 binding = "DB"
 database_name = "svelte-auth"
 database_id = "3d2d21ca-4fe7-4fac-a472-1c6c0fa141ff"
-
-[[d1_databases]]
-binding = "PLAYLIST_DB"
-database_name = "svelte-auth-playlist"
-database_id = "162d82c0-2aea-48f6-a2c4-71ca7d9b6ad2"
