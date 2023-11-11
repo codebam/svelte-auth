@@ -1,1 +1,0 @@
-CREATE TABLE IF NOT EXISTS UserData (id TEXT PRIMARY KEY, email TEXT, content TEXT);

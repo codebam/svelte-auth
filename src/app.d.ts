@@ -3,7 +3,6 @@ declare global {
 		interface Platform {
 			env?: {
 				DB: D1Database;
-				DATA_DB: D1Database;
 				PLAYLIST_DB: D1Database;
 			};
 			context: {

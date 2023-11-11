@@ -3,14 +3,14 @@ import tryLogin from '$lib/tryLogin';
 
 export const actions = {
 	add: async (event) => {
-		if (await tryLogin(event.cookies.get('session') ?? '', event.platform?.env?.DB)) {
+		if (await tryLogin(event.cookies.get('session'), event.platform?.env?.DB)) {
 			const session = JSON.parse(event.cookies.get('session'));
 			const email = session.email;
 			const formdata = await event.request.formData();
 			const url = new URL(formdata.get('url'));
 			const youtube_url = 'https://www.youtube.com/embed/';
 			const new_url = youtube_url + url.searchParams.get('v') + '?autoplay=1';
-			await event.platform?.env?.PLAYLIST_DB.prepare('INSERT INTO Playlist VALUES (?, ?, ?)')
+			await event.platform?.env?.DB.prepare('INSERT INTO Playlist VALUES (?, ?, ?)')
 				.bind(crypto.randomUUID(), email, new_url)
 				.all();
 			throw redirect(303, '/');
