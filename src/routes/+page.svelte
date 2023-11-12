@@ -20,7 +20,7 @@
 {#if data.auth}
   <form method="POST" action="/playlist?/add">
     <label>Submit a song
-      <input name="url" type="url" placeholder="https://.*youtube.com/.*" pattern="https://.*youtube.com/.*">
+      <input name="url" type="url" placeholder="paste a youtube link" pattern=".*v=.*">
     </label>
     <button>Submit</button>
   </form>
