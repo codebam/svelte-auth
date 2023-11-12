@@ -6,12 +6,14 @@ export const actions = {
 		const data = await event.request.formData();
 		const email = data.get('email');
 		const password = await sha256(data.get('password')?.toString() ?? '');
-		const { success } = await event.platform?.env?.DB.prepare('INSERT INTO Users VALUES (?, ?)')
-			.bind(email, password)
-			.all();
-		if (success) {
-			event.cookies.set('session', JSON.stringify({ email, password }));
-			throw redirect(303, '/');
+		if (event.platform && event.platform.env) {
+			const { success } = await event.platform.env.DB.prepare('INSERT INTO Users VALUES (?, ?)')
+				.bind(email, password)
+				.all();
+			if (success) {
+				event.cookies.set('session', JSON.stringify({ email, password }));
+				throw redirect(303, '/');
+			}
 		}
 	},
 	login: async (event) => {
