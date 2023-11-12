@@ -1,3 +1,5 @@
+import type { D1Database } from '@cloudflare/workers-types';
+
 const tryLogin = async (session_cookie: string | undefined, DB: D1Database) => {
 	if (session_cookie) {
 		const { email, password } = JSON.parse(session_cookie);
