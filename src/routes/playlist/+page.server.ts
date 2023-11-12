@@ -10,8 +10,8 @@ export const actions = {
 			const url = new URL(formdata.get('url'));
 			const youtube_url = 'https://www.youtube.com/embed/';
 			const new_url = youtube_url + url.searchParams.get('v') + '?autoplay=1';
-			await event.platform?.env?.DB.prepare('INSERT INTO Playlist VALUES (?, ?, ?)')
-				.bind(crypto.randomUUID(), email, new_url)
+			await event.platform?.env?.DB.prepare('INSERT INTO Playlist VALUES (?, ?, ?, ?)')
+				.bind(crypto.randomUUID(), email, new_url, Math.floor(new Date().getTime()))
 				.all();
 			throw redirect(303, '/');
 		}
