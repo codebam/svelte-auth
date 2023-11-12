@@ -1,12 +1,21 @@
 <script lang="ts">
-  export let data: {auth: boolean, song: string};
+  import YouTube from 'svelte-youtube';
+  export let data: {auth: boolean, song: {id: string, url: string}};
+  const removeSong = () => {
+    document.getElementById('remove_song').click();
+  };
 </script>
 
 {#if !data.auth}
 <p>Visit <a href="/login">login</a></p>
 {/if}
 
-<iframe width="560" height="315" src="{data.song}" title="video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<YouTube on:end={() => removeSong()} videoId={data.song.url} options={{playerVars: { autoplay: 1 }}} />
+
+<form style="display: none;" method="POST" action="/playlist?/remove">
+  <input name="id" value="{data.song.id}">
+  <button id="remove_song">remove</button>
+</form>
 
 {#if data.auth}
   <form method="POST" action="/playlist?/add">
