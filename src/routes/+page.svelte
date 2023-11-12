@@ -1,5 +1,5 @@
 <script lang="ts">
-  import YouTube from 'svelte-youtube';
+  import YouTube from '$lib/svelte-youtube.svelte';
   export let data: {auth: boolean, song: {id: string, url: string}};
   const removeSong = () => {
     document.getElementById('remove_song').click();
