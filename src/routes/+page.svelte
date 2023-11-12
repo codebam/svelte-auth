@@ -9,7 +9,6 @@
 <iframe width="560" height="315" src="{data.song}" title="video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 {#if data.auth}
-  <p>You successfully logged in!</p>
   <form method="POST" action="/playlist?/add">
     <label>Submit a song
       <input name="url" type="url" placeholder="https://.*youtube.com/.*" pattern="https://.*youtube.com/.*">
