@@ -5,11 +5,11 @@ export const actions = {
 	add: async (event) => {
 		if (await tryLogin(event.cookies.get('session'), event.platform?.env?.DB)) {
 			const session = JSON.parse(event.cookies.get('session'));
-			const email = session.email;
+			const id = session.id;
 			const formdata = await event.request.formData();
 			const v = new URL(formdata.get('url')).searchParams.get('v');
 			await event.platform?.env?.DB.prepare('INSERT INTO Playlist VALUES (?, ?, ?, ?)')
-				.bind(crypto.randomUUID(), email, v, Math.floor(new Date().getTime()))
+				.bind(crypto.randomUUID(), id, v, Math.floor(new Date().getTime()))
 				.all();
 		}
 		throw redirect(303, '/');
