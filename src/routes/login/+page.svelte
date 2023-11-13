@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <form method="POST" action="?/login">
-  <label>Email
+  <label>Username
     <input name="id">
   </label>
   <label>Password
@@ -11,7 +11,7 @@
 
 <h1>Register</h1>
 <form method="POST" action="?/register">
-  <label>Email
+  <label>Username
     <input name="id">
   </label>
   <label>Password
