@@ -5,11 +5,10 @@ const getCurrentSong = async (db: D1Database | undefined) => {
 		const result = await db
 			.prepare('SELECT id, url FROM Playlist ORDER BY date DESC LIMIT 1')
 			.all();
-		try {
+		if (result.results.length !== 0) {
 			return { id: result.results[0].id, url: result.results[0].url };
-		} catch {
-			return { id: '', url: '' };
 		}
+		return { id: '', url: '' };
 	}
 };
 
